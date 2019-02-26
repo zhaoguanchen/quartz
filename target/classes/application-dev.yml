@@ -1,0 +1,92 @@
+eureka:
+  client:
+    service-url:
+          defaultZone: http://192.168.87.236:8761/eureka/
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        druid:
+            first:  #数据源1
+                url: jdbc:mysql://192.168.15.55:3306/bdc_channel?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+                username: root
+                password: 123456
+
+            initial-size: 10
+            max-active: 100
+            min-idle: 10
+            max-wait: 60000
+            pool-prepared-statements: true
+            max-pool-prepared-statement-per-connection-size: 20
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            validation-query: SELECT 1 FROM DUAL
+            test-while-idle: true
+            test-on-borrow: false
+            test-on-return: false
+            stat-view-servlet:
+                enabled: true
+                url-pattern: /druid/*
+                #login-username: admin
+                #login-password: admin
+            filter:
+                stat:
+                    log-slow-sql: true
+                    slow-sql-millis: 1000
+                    merge-sql: true
+                wall:
+                    config:
+                        multi-statement-allow: true
+
+
+stmp:
+  host: mail.hd.bitauto.com
+  account: sjxtzx@hd.bitauto.com
+  password: qwe123!
+mail:
+  smtp:
+    auth: true
+    timeout: 25000
+multipart:
+  enabled: true
+  max-file-size: 50mb
+  max-request-size: 50mb
+
+HIVE_CONN:
+  HIVE_CONN_URL: jdbc:hive://192.168.15.47:10000/
+  HIVE_CONN_DRIVER: org.apache.hive.jdbc.HiveDriver
+
+PRESTO_CONN:
+  PRESTO_CONN_URL: jdbc:presto://192.168.87.235:9099/hive/
+  PRESTO_CONN_DRIVER: com.facebook.presto.jdbc.PrestoDriver
+
+LOGIN:
+  YICHE_LOGINURL: https://oa.bitauto.com/hrservices/employee.asmx
+  YICHE_WSDLLOCATION: https://sysapp.bitauto.com/hrservices/employee.asmx?wsdl
+
+HDFS:
+  HDFS_CONN_URL: hdfs://172.20.4.127:8020
+  FILE_DOWNLOAD_LOCALDIR: /tmp/hdfsdownload
+  HDFS_CONN_USER: zhaoguanchen
+
+NameNode:
+  Path: hdfs://172.20.4.127:8020/
+
+hive:
+  driverName: org.apache.hive.jdbc.HiveDriver
+  url:  jdbc:hive2://192.168.15.47:10000/default
+  user: liuming1
+  password:
+
+
+presto:
+  driverName: com.facebook.presto.jdbc.PrestoDriver
+  url: jdbc:presto://192.168.87.236:9099/hive/
+  user: weiyx
+  password:
+
+
+
+YU:
+  Path: 172.20.4.127:9820
+  UNIQUE_ID: 00000000

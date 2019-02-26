@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.yiche.bdc:aurora-common:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yiche/bdc/aurora-common/1.0-SNAPSHOT/aurora-common-1.0-20190131.063113-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yiche/bdc/aurora-common/1.0-SNAPSHOT/aurora-common-1.0-20190131.063113-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/yiche/bdc/aurora-common/1.0-SNAPSHOT/aurora-common-1.0-20190131.063113-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

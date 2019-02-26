@@ -1,0 +1,25 @@
+server:
+  port: 9821
+  context-path: /
+spring:
+    # 环境 dev|test|pro
+    profiles:
+        active: dev
+    application:
+        name: data-export-email
+    # jackson时间格式化
+    jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd HH:mm:ss
+    http:
+        multipart:
+            max-file-size: 1024Mb
+            max-request-size: 1024Mb
+            enabled: true
+
+# Mybatis配置
+mybatis:
+    typeAliasesPackage: com.yiche.bdc.dataexport.entity
+    mapperLocations: classpath:mapper/**/*.xml
+    configLocation: classpath:mybatis-spring.xml
+

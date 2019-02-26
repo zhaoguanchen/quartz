@@ -1,0 +1,73 @@
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        druid:
+            first:  #数据源 大禹平台数据库
+              url: jdbc:mysql://mysqlmg.service.ycidc02:6033/bdc_channel?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+              username: user_cc
+              password: TDETLqt#ddl2018
+
+            initial-size: 10
+            max-active: 100
+            min-idle: 10
+            max-wait: 60000
+            pool-prepared-statements: true
+            max-pool-prepared-statement-per-connection-size: 20
+            time-between-eviction-runs-millis: 60000
+            min-evictable-idle-time-millis: 300000
+            validation-query: SELECT 1 FROM DUAL
+            test-while-idle: true
+            test-on-borrow: false
+            test-on-return: false
+            stat-view-servlet:
+                enabled: true
+                url-pattern: /druid/*
+                #login-username: admin
+                #login-password: admin
+            filter:
+                stat:
+                    log-slow-sql: true
+                    slow-sql-millis: 1000
+                    merge-sql: true
+                wall:
+                    config:
+                        multi-statement-allow: true
+
+
+HIVE_CONN:
+  HIVE_CONN_URL: jdbc:hive://172.20.0.25:10000/
+  HIVE_CONN_DRIVER: org.apache.hive.jdbc.HiveDriver
+
+PRESTO_CONN:
+  PRESTO_CONN_URL: jdbc:presto://172.20.0.15:9088/hive/
+  PRESTO_CONN_DRIVER: com.facebook.presto.jdbc.PrestoDriver
+
+
+HDFS:
+  HDFS_CONN_URL: hdfs://172.20.0.15:8020
+  FILE_DOWNLOAD_LOCALDIR: /tmp/hdfsdownload
+  HDFS_CONN_USER: zhaoguanchen
+
+NameNode:
+  Path: hdfs://172.20.0.15:8020/
+
+YU:
+  Path: yu.yiche.com
+  UNIQUE_ID: 00000000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://172.20.8.122:8761/eureka/,http://172.20.8.123:8761/eureka/
+
+presto.driverName: com.facebook.presto.jdbc.PrestoDriver
+presto.url: jdbc:presto://172.20.0.38:9099/hive/
+presto.user: weiyx
+presto.password:
+
+
+hive.driverName: org.apache.hive.jdbc.HiveDriver
+hive.url: jdbc:hive2://172.20.0.25:10000/default
+hive.user: luozhenyu
+hive.password: lzyu-0-0

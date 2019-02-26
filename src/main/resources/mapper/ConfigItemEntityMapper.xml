@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yiche.bdc.dataexport.dao.ConfigItemEntityMapper">
+  <resultMap id="BaseResultMap" type="com.yiche.bdc.dataexport.entity.ConfigItemEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="database_name" jdbcType="VARCHAR" property="databaseName" />
+    <result column="table_name" jdbcType="VARCHAR" property="tableName" />
+    <result column="column" jdbcType="VARCHAR" property="column" />
+    <result column="sql_condition" jdbcType="VARCHAR" property="sqlCondition" />
+    <result column="email_subject" jdbcType="VARCHAR" property="emailSubject" />
+    <result column="email_content" jdbcType="VARCHAR" property="emailContent" />
+    <result column="attach_name" jdbcType="VARCHAR" property="attachName" />
+    <result column="file_title" jdbcType="VARCHAR" property="fileTitle" />
+    <result column="email_recipient" jdbcType="VARCHAR" property="emailRecipient" />
+    <result column="email_cc" jdbcType="VARCHAR" property="emailCc" />
+    <result column="email_bcc" jdbcType="VARCHAR" property="emailBcc" />
+    <result column="general_id" jdbcType="INTEGER" property="generalId" />
+    <result column="partition_cloumn" jdbcType="VARCHAR" property="partitionCloumn" />
+    <result column="partition_fomat" jdbcType="VARCHAR" property="partitionFomat" />
+    <result column="partition_date" jdbcType="INTEGER" property="partitionDate" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from email_config_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yiche.bdc.dataexport.entity.ConfigItemEntity">
+    insert into email_config_item (id, database_name, table_name, 
+      column, sql_condition, email_subject, 
+      email_content, attach_name, file_title, 
+      email_recipient, email_cc, email_bcc, 
+      general_id, partition_cloumn, partition_fomat, 
+      partition_date)
+    values (#{id,jdbcType=INTEGER}, #{databaseName,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR}, 
+      #{column,jdbcType=VARCHAR}, #{sqlCondition,jdbcType=VARCHAR}, #{emailSubject,jdbcType=VARCHAR}, 
+      #{emailContent,jdbcType=VARCHAR}, #{attachName,jdbcType=VARCHAR}, #{fileTitle,jdbcType=VARCHAR}, 
+      #{emailRecipient,jdbcType=VARCHAR}, #{emailCc,jdbcType=VARCHAR}, #{emailBcc,jdbcType=VARCHAR}, 
+      #{generalId,jdbcType=INTEGER}, #{partitionCloumn,jdbcType=VARCHAR}, #{partitionFomat,jdbcType=VARCHAR}, 
+      #{partitionDate,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yiche.bdc.dataexport.entity.ConfigItemEntity">
+    update email_config_item
+    set database_name = #{databaseName,jdbcType=VARCHAR},
+      table_name = #{tableName,jdbcType=VARCHAR},
+      column = #{column,jdbcType=VARCHAR},
+      sql_condition = #{sqlCondition,jdbcType=VARCHAR},
+      email_subject = #{emailSubject,jdbcType=VARCHAR},
+      email_content = #{emailContent,jdbcType=VARCHAR},
+      attach_name = #{attachName,jdbcType=VARCHAR},
+      file_title = #{fileTitle,jdbcType=VARCHAR},
+      email_recipient = #{emailRecipient,jdbcType=VARCHAR},
+      email_cc = #{emailCc,jdbcType=VARCHAR},
+      email_bcc = #{emailBcc,jdbcType=VARCHAR},
+      general_id = #{generalId,jdbcType=INTEGER},
+      partition_cloumn = #{partitionCloumn,jdbcType=VARCHAR},
+      partition_fomat = #{partitionFomat,jdbcType=VARCHAR},
+      partition_date = #{partitionDate,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, database_name, table_name, column, sql_condition, email_subject, email_content, 
+    attach_name, file_title, email_recipient, email_cc, email_bcc, general_id, partition_cloumn, 
+    partition_fomat, partition_date
+    from email_config_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, database_name, table_name, column, sql_condition, email_subject, email_content, 
+    attach_name, file_title, email_recipient, email_cc, email_bcc, general_id, partition_cloumn, 
+    partition_fomat, partition_date
+    from email_config_item
+  </select>
+  <select id="getItemListByGeneralId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from email_config_item
+    where general_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByGeneralId" parameterType="java.lang.Integer">
+    delete from email_config_item
+    where general_id = #{id,jdbcType=INTEGER}
+  </delete>
+
+</mapper>
